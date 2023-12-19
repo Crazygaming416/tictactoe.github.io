@@ -73,10 +73,10 @@ function checkOver() {
     for (let j = 0; j < 3; j++) {
         var row = document.getElementsByClassName("r-"+j);
         for (var i = 0; i < row.length; i++){
-            if (row[i].innerText == "1" && (i==j || row.length-1-i==j)) {
+            if (row[i].innerText == "1" && i==j) {
                 count1++;
             }
-            else if (row[i].innerText == "-1" && (i==j || row.length-1-i==j)){
+            else if (row[i].innerText == "-1" && i==j){
                 count2++;
             }
             
@@ -87,6 +87,25 @@ function checkOver() {
     }
     count1=0;
     count2=0;
+
+    for (let j = 0; j < 3; j++) {
+        var row = document.getElementsByClassName("r-"+j);
+        for (var i = 0; i < row.length; i++){
+            if (row[i].innerText == "1" && row.length-1-i==j) {
+                count1++;
+            }
+            else if (row[i].innerText == "-1" && row.length-1-i==j){
+                count2++;
+            }
+            
+            
+        }
+        printWinner(count1,count2);
+    
+    }
+    count1=0;
+    count2=0;
+
 
     if (!gameOver) { checkDraw(); }
     else { }
