@@ -9,6 +9,17 @@ window.onload = function () {
 var Player_Turn = false;
 var setter_value;
 var draw = false;
+
+function printWinner(count1, count2)
+{
+    if (count1 == 3) {
+        console.log("player1Won");
+    }
+    else if (count2 == 3) {
+        console.log("player2Won");
+    }
+}
+
 function checkDraw() {
     var cells = document.getElementsByClassName("cell");
 
@@ -25,6 +36,10 @@ function checkDraw() {
 function checkOver() {
     var count1 = 0;
     var count2 = 0;
+    
+    var cells = document.getElementsByClassName("cell");
+
+
     for (let j = 0; j < 3; j++) {
         var row = document.getElementsByClassName("r-"+j);
         for (var i = 0; i < row.length; i++) {
@@ -35,36 +50,48 @@ function checkOver() {
                 count2++;
             }
 
-            if (count1 == 3) {
-                console.log("player1Won");
-            }
-            else if (count2 == 3) {
-                console.log("player2Won");
-            }
+            printWinner(count1, count2);
         }
         count1=0;
         count2=0;
     }
+
     for (let j = 0; j < 3; j++) {
-        var row = document.getElementsByClassName("c-"+j);
-        for (var i = 0; i < row.length; i++) {
-            if (row[i].innerText == "1") {
+        var col = document.getElementsByClassName("c-"+j);
+        for (var i = 0; i < col.length; i++) {
+            if (col[i].innerText == "1") {
                 count1++;
             }
-            else if (row[i].innerText == "-1") {
+            else if (col[i].innerText == "-1") {
                 count2++;
             }
 
-            if (count1 == 3) {
-                console.log("player1Won");
-            }
-            else if (count2 == 3) {
-                console.log("player2Won");
-            }
+            printWinner(count1, count2);
+            
         }
         count1=0;
         count2=0;
     }
+
+    let iter = 0;
+    for (let j = 0; j < 3; j++) {
+        for (var i = 0; i < 3; i++) {
+            if(cells[iter].innerText == "1" && (i==j || row.length-1-i==j))
+            {
+                count1++;
+            }
+            else if(cells[iter].innerText == "-1" && (i==j || row.length-1-i==j))
+            {
+                count2++;
+            }
+            iter++;
+            
+            printWinner(count1, count2);
+        }
+    }
+    count1 = 0;
+    count2 = 0;
+
     checkDraw();
 }
 
