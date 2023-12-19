@@ -117,11 +117,11 @@ function Put(obj) {
     }
 
     if (Player_Turn == false) {
-        setter_value = "-1";
+        setter_value = "1";
         Player_Turn = true;
     }
     else {
-        setter_value = "1";
+        setter_value = "-1";
         Player_Turn = false;
     }
 
