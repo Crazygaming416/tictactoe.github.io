@@ -2,7 +2,7 @@ window.onload = function () {
     var cells = document.getElementsByClassName("cell");
 
     for (var i = 0; i < cells.length; i++) {
-        cells[i].innerText = "0";
+        //cells[i].innerText = "0";
     }
 }
 
@@ -140,7 +140,7 @@ function Put(obj) {
         console.log(icon, icon.className);
     }
 
-    obj.innerText= setter_value;
+    
     console.log(setter_value, obj);
 
     checkOver();
