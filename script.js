@@ -2,12 +2,11 @@ window.onload = function () {
     var cells = document.getElementsByClassName("cell");
 
     for (var i = 0; i < cells.length; i++) {
-        //cells[i].innerText = "0";
+        cells[i].querySelector("i").className = "fa-regular fa-square-full";
     }
 }
 
 var Player_Turn = false;
-var setter_value;
 var draw = false;
 var gameOver = false;
 function printWinner(count1,count2)
@@ -42,10 +41,10 @@ function checkOver() {
     for (let j = 0; j < 3; j++) {
         var row = document.getElementsByClassName("r-"+j);
         for (var i = 0; i < row.length; i++) {
-            if (row[i].innerText == "1") {
+            if (row[i].querySelector("i").getAttribute("class") == "fa-solid fa-0") {
                 count1++;
             }
-            else if (row[i].innerText == "-1") {
+            else if (row[i].querySelector("i").getAttribute("class") == "fa-solid fa-xmark") {
                 count2++;
             }
             printWinner(count1,count2);
@@ -56,10 +55,10 @@ function checkOver() {
     for (let j = 0; j < 3; j++) {
         var col = document.getElementsByClassName("c-"+j);
         for (var i = 0; i < col.length; i++) {
-            if (col[i].innerText == "1") {
+            if (col[i].querySelector("i").getAttribute("class") == "fa-solid fa-0") {
                 count1++;
             }
-            else if (col[i].innerText == "-1") {
+            else if (col[i].querySelector("i").getAttribute("class") == "fa-solid fa-xmark") {
                 count2++;
             }
 
@@ -73,10 +72,10 @@ function checkOver() {
     for (let j = 0; j < 3; j++) {
         var row = document.getElementsByClassName("r-"+j);
         for (var i = 0; i < row.length; i++){
-            if (row[i].innerText == "1" && i==j) {
+            if (row[i].querySelector("i").getAttribute("class") == "fa-solid fa-0" && i==j) {
                 count1++;
             }
-            else if (row[i].innerText == "-1" && i==j){
+            else if (row[i].querySelector("i").getAttribute("class") == "fa-solid fa-xmark" && i==j){
                 count2++;
             }
             
@@ -91,10 +90,10 @@ function checkOver() {
     for (let j = 0; j < 3; j++) {
         var row = document.getElementsByClassName("r-"+j);
         for (var i = 0; i < row.length; i++){
-            if (row[i].innerText == "1" && row.length-1-i==j) {
+            if (row[i].querySelector("i").getAttribute("class") == "fa-solid fa-0" && row.length-1-i==j) {
                 count1++;
             }
-            else if (row[i].innerText == "-1" && row.length-1-i==j){
+            else if (row[i].querySelector("i").getAttribute("class") == "fa-solid fa-xmark" && row.length-1-i==j){
                 count2++;
             }
             
@@ -112,18 +111,17 @@ function checkOver() {
 }
 
 function Put(obj) {
-    if (obj.innerText != "0") {
+    if (obj.querySelector("i").getAttribute("class") != "fa-regular fa-square-full") {
         return;
     }
 
     if (Player_Turn == false) {
         setter_value = "1";
         Player_Turn = true;
-        var icon = obj.querySelector("#i");
+        var icon = obj.querySelector("i");
         if(icon)
         {
             icon.className = "fa-solid fa-0";
-            icon.innerText = "";
         }
 
         console.log(icon, icon.className);
@@ -131,11 +129,10 @@ function Put(obj) {
     else {
         setter_value = "-1";
         Player_Turn = false;
-        var icon = obj.querySelector("#i")[0];
+        var icon = obj.querySelector("i");
         if(icon)
         {
-            icon.className = "fa-solid fa-0";
-            icon.innerText = "";
+            icon.className = "fa-solid fa-xmark";
         }
         
         console.log(icon, icon.className);
