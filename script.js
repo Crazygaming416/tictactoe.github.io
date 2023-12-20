@@ -24,7 +24,7 @@ function checkDraw() {
     var cells = document.getElementsByClassName("cell");
     draw=true;
     for (var i = 0; i < cells.length; i++) {
-        if (cells[i].innerText == "0") {
+        if (cells[i].querySelector("i").getAttribute("class") == "fa-regular fa-square-full") {
             draw = false;
         }
     }
@@ -107,7 +107,6 @@ function checkOver() {
 
 
     if (!gameOver) { checkDraw(); }
-    else { }
 }
 
 function Put(obj) {
