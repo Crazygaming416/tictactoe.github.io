@@ -119,13 +119,28 @@ function Put(obj) {
     if (Player_Turn == false) {
         setter_value = "1";
         Player_Turn = true;
+        var icon = obj.querySelector("#i");
+        if(icon)
+        {
+            icon.className = "fa-solid fa-0";
+            icon.innerText = "";
+        }
+
+        console.log(icon, icon.className);
     }
     else {
         setter_value = "-1";
         Player_Turn = false;
+        var icon = obj.querySelector("#i")[0];
+        if(icon)
+        {
+            icon.className = "fa-solid fa-0";
+        }
+        
+        console.log(icon, icon.className);
     }
 
-    obj.innerText = setter_value;
+    obj.innerText= setter_value;
     console.log(setter_value, obj);
 
     checkOver();
