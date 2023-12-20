@@ -135,6 +135,7 @@ function Put(obj) {
         if(icon)
         {
             icon.className = "fa-solid fa-0";
+            icon.innerText = "";
         }
         
         console.log(icon, icon.className);
